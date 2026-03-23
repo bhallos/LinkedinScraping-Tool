@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn ProScraper & Outreach</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">🔗 LinkedIn ProScraper</div>
+    <div class="tagline">Search · Scrape · Personalise · Export</div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="search">🔍 Search</button>
+    <button class="tab" data-tab="myprofile">👤 My Profile</button>
+    <button class="tab" data-tab="results">📋 Results <span id="result-count" class="badge">0</span></button>
+  </div>
+
+  <!-- ═══════════════════════ SEARCH TAB ═══════════════════════ -->
+  <div id="search-tab" class="tab-content active">
+
+    <div class="field-group">
+      <label>Job Title / Role</label>
+      <input id="job-title" type="text" placeholder='"PCC coach" OR "TEDx speaker"'>
+    </div>
+    <div class="field-group">
+      <label>Company</label>
+      <input id="company" type="text" placeholder='"Google" OR "Microsoft"'>
+    </div>
+    <div class="field-group">
+      <label>Location</label>
+      <input id="location" type="text" placeholder='"San Francisco" OR "Mumbai"'>
+    </div>
+    <div class="field-group">
+      <label>Skills / Keywords</label>
+      <input id="keywords" type="text" placeholder='"email" AND "leadership"'>
+    </div>
+    <div class="field-group">
+      <label>Exclude Words <span class="hint">(comma separated)</span></label>
+      <input id="exclude" type="text" placeholder='jobs, hiring, apply'>
+    </div>
+    <div class="field-group">
+      <label>Custom Boolean Query</label>
+      <textarea id="custom-query" rows="2" placeholder="Or type your full query here…"></textarea>
+    </div>
+
+    <div class="query-preview-box">
+      <div class="qp-label">Generated Query:</div>
+      <div id="query-preview" class="qp-text">Enter criteria above…</div>
+    </div>
+
+    <div class="btn-row">
+      <button id="search-btn" class="btn primary full">🔍 Search Google</button>
+    </div>
+    <div class="btn-row gap">
+      <button id="copy-btn"  class="btn secondary">Copy</button>
+      <button id="clear-btn" class="btn secondary">Clear</button>
+    </div>
+
+    <div class="tip-box">
+      💡 After Google opens, click the floating <b>LinkedIn icon</b> (bottom-right) to scrape results.<br>
+      Visit any <b>linkedin.com/in/</b> profile to extract full data — About, Experience, Email patterns &amp; more.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ MY PROFILE TAB ═══════════════════════ -->
+  <div id="myprofile-tab" class="tab-content">
+    <div class="section-label">Your Identity</div>
+
+    <div class="two-col">
+      <div class="field-group">
+        <label>Your Name</label>
+        <input id="my-name" type="text" placeholder="Raj Gupta">
+      </div>
+      <div class="field-group">
+        <label>Your Title</label>
+        <input id="my-title" type="text" placeholder="Founder / Coach">
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="field-group">
+        <label>Your Company</label>
+        <input id="my-company" type="text" placeholder="Acme Inc.">
+      </div>
+      <div class="field-group">
+        <label>Years of Experience</label>
+        <input id="my-years" type="text" placeholder="5">
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="field-group">
+        <label>Trials / Experiments</label>
+        <input id="my-trials" type="text" placeholder="100+">
+      </div>
+      <div class="field-group">
+        <label>No. of Clients</label>
+        <input id="my-clients" type="text" placeholder="50+">
+      </div>
+    </div>
+
+    <div class="section-label">Your Offer</div>
+
+    <div class="field-group">
+      <label>Target Audience</label>
+      <input id="my-audience" type="text" placeholder="Coaches & consultants">
+    </div>
+    <div class="field-group">
+      <label>Pain Point You Solve</label>
+      <input id="my-pain" type="text" placeholder="Not getting replies on LinkedIn">
+    </div>
+    <div class="field-group">
+      <label>Dream Outcome You Deliver</label>
+      <input id="my-outcome" type="text" placeholder="30–40 booked appointments/month">
+    </div>
+    <div class="field-group">
+      <label>Struggle They Want to Avoid</label>
+      <input id="my-avoid" type="text" placeholder="Endless cold messages with no replies">
+    </div>
+
+    <div class="section-label">Your Proof &amp; Resources</div>
+
+    <div class="field-group">
+      <label>Framework / Tool / Offer Name</label>
+      <input id="my-framework" type="text" placeholder="30-min LinkedIn Masterclass">
+    </div>
+    <div class="field-group">
+      <label>Lead Magnet Name</label>
+      <input id="my-magnet" type="text" placeholder="7-Figure Appointment Tracker">
+    </div>
+    <div class="field-group">
+      <label>Your Best Case Study <span class="hint">(2–3 sentences)</span></label>
+      <textarea id="my-casestudy" rows="3" placeholder="Suresh went from ₹5k to ₹25k in 2 weeks. Now earning 1–2 lakhs/month…"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Soft Credibility Statement</label>
+      <input id="my-credibility" type="text" placeholder="Helped 100+ coaches scale their practice">
+    </div>
+    <div class="field-group">
+      <label>Default CTA</label>
+      <input id="my-cta" type="text" placeholder="Worth a chat?">
+    </div>
+    <div class="field-group">
+      <label>Your Industry</label>
+      <input id="my-industry" type="text" placeholder="Business Coaching / SaaS">
+    </div>
+
+    <div class="btn-row">
+      <button id="save-profile-btn" class="btn primary full">💾 Save My Profile</button>
+    </div>
+    <div id="profile-saved-msg" class="saved-msg" style="display:none">✅ Profile saved!</div>
+  </div>
+
+  <!-- ═══════════════════════ RESULTS TAB ═══════════════════════ -->
+  <div id="results-tab" class="tab-content">
+
+    <div class="results-topbar">
+      <button id="scrape-btn"       class="btn primary sm">⬇ Scrape Page</button>
+      <button id="gen-messages-btn" class="btn accent  sm">✉ Gen Messages</button>
+      <button id="export-csv-btn"   class="btn success sm">📥 Export CSV</button>
+      <button id="clear-results-btn" class="btn danger sm">🗑</button>
+    </div>
+
+    <div class="results-summary">
+      <span id="total-profiles">0</span> profiles &nbsp;·&nbsp; <span id="msg-status">messages not generated yet</span>
+    </div>
+
+    <!-- Message template selector -->
+    <div class="template-picker">
+      <label>Connection Request Template:</label>
+      <select id="template-select">
+        <option value="1">Template 1 — Post reference + lead magnet</option>
+        <option value="2">Template 2 — Seasonal / Gift angle</option>
+        <option value="3">Template 3 — Personal story + pain</option>
+        <option value="4">Template 4 — Common struggle + framework</option>
+        <option value="5">Template 5 — Profile detail + system</option>
+      </select>
+    </div>
+
+    <div id="results-list" class="results-list">
+      <p class="empty-state">No profiles yet.<br>Search Google → click the floating button → scrape.<br>Or visit a LinkedIn profile directly.</p>
+    </div>
+  </div>
+
+</div><!-- .container -->
+
+<script src="message-templates.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
